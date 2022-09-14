@@ -62,6 +62,7 @@ export default {
                 alert("您输入的用户名或密码错误！");
               }
             });
+        this.$router.push({ path: "/main" });
       }
     }
   }

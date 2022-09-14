@@ -70,7 +70,7 @@ export default {
                 // console.log("输出response.data", res.data);
                 // console.log("输出response.data.status", res.data.status);
                 if (res.data.status === 200) {
-                  this.$router.push({ path: "/goHome" });
+                  this.$router.push({ path: "/" });
                 } else {
                   alert("您输入的用户名已存在！");
                 }

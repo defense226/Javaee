@@ -19,11 +19,11 @@ export default new Router({
     mode: 'hash',
     routes: [
         {
-            path:"/login",
+            path:"/",
             component:Login
         },
         {
-            path: '/',
+            path: '/main',
             component: Main,
             redirect:'/welcome',
             //嵌套路由
@@ -78,7 +78,7 @@ export default new Router({
             redirect: "/Main"
         },
         {
-            path:"/",
+            path:"/register",
             component:Register
         },
         {
