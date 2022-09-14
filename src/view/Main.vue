@@ -5,7 +5,8 @@
       <el-header>
 
         <span>蹦床管理系统</span>
-        <el-button @click="drawer = true" type="primary" round icon="el-icon-s-custom" style="margin-left: 16px;">
+        <el-button @click="drawer = true" type="primary" round
+                   icon="el-icon-s-custom" style="margin-left: 16px;">
         </el-button>
 
         <el-drawer class="admin_title"
@@ -52,16 +53,18 @@
 
 
       </el-header>
-
+<div class="menu-box">
       <el-container>
         <el-aside width="200px" >
           <!--        <el-row style="height: 100%;">-->
           <!--          <el-col :span="12"  style="min-height: 100%; background-color: #324057;">-->
           <el-menu  router background-color="#324057" active-text-color="#ffee2b" text-color="#fff"
                     default-active="defaultActive" :unique-opened="true" :collapse="isCollapse">
-            <el-menu-item index="welcome"><i class="el-icon-menu"></i>首页</el-menu-item>
+            <el-menu-item index="welcome">
+              <i id="emotion1" class="el-icon-menu"></i>首页</el-menu-item>
             <el-submenu index="2" active-text-color="#ffee2b">
-              <template slot="title"><i class="el-icon-document"></i>数据管理</template>
+              <template slot="title">
+                <i id="emotion3" class="el-icon-document"></i>数据管理</template>
               <el-menu-item index="AthList">运动员列表</el-menu-item>
               <el-menu-item index="actList">动作列表</el-menu-item>
               <el-menu-item index="gameInfor">比赛信息</el-menu-item>
@@ -69,17 +72,20 @@
               <!--                <el-menu-item index="adminList">管理员列表</el-menu-item>-->
             </el-submenu>
             <el-submenu index="3">
-              <template slot="title"><i class="el-icon-plus"></i><span>添加数据</span></template>
+              <template slot="title">
+                <i id="emotion3" class="el-icon-plus"></i><span>添加数据</span></template>
               <el-menu-item index="Addath"><span>添加运动员</span></el-menu-item>
               <el-menu-item index="Addact"><span>添加动作</span></el-menu-item>
             </el-submenu>
             <el-submenu index="4">
-              <template slot="title"><i class="el-icon-star-on"></i>视频展示</template>
+              <template slot="title">
+                <i id="emotion4" class="el-icon-star-on"></i>视频展示</template>
               <el-menu-item index="Select">筛选</el-menu-item>
               <!-- <el-menu-item index="newMember">用户数据</el-menu-item> -->
             </el-submenu>
             <el-submenu index="5">
-              <template slot="title"><i class="el-icon-edit"></i>编辑</template>
+              <template slot="title">
+                <i id="emotion5" class="el-icon-edit"></i>编辑</template>
               <!-- <el-menu-item index="uploadImg">上传图片</el-menu-item> -->
               <el-menu-item index="vueEdit">文本编辑</el-menu-item>
             </el-submenu>
@@ -93,18 +99,8 @@
               <el-menu-item index="explain">说明</el-menu-item>
             </el-submenu>
           </el-menu>
-          <!--          </el-col>-->
-          <!--          <el-col :span="20" style="height: 100%;">-->
-          <!--            <keep-alive>-->
-          <!--              <router-view></router-view>-->
-          <!--            </keep-alive>-->
-          <!--          </el-col>-->
-          <!--        </el-row>-->
-
-
 
         </el-aside>
-
 
         <el-main>
           <router-view>
@@ -113,6 +109,7 @@
         </el-main>
 
       </el-container>
+  </div>
     </el-container>
   </div>
 
@@ -138,22 +135,11 @@ export default {
       drawer: false,
     };
   },
+  created() {
+    this.get
+  },
   methods: {
-    handleAvatarSuccess(res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw);
-    },
-    beforeAvatarUpload(file) {
-      const isJPG = file.type === 'image/jpeg';
-      const isLt2M = file.size / 1024 / 1024 < 2;
 
-      if (!isJPG) {
-        this.$message.error('上传头像图片只能是 JPG 格式!');
-      }
-      if (!isLt2M) {
-        this.$message.error('上传头像图片大小不能超过 2MB!');
-      }
-      return isJPG && isLt2M;
-    }
   }
 }
 
@@ -200,6 +186,13 @@ export default {
   .el-menu{
     border-right: none;
   }
+  width: 180px;
+  height: 700px;
+  //border-radius: 30px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
+  /* 添加过渡 */
+  transition: all .2s ease-out;
+  overflow: hidden;
 }
 .admin_title{
   margin-top: 10px;
@@ -208,6 +201,10 @@ export default {
 }
 .iconfont{
   margin-right:10px;
+  font-size: 26px !important;
+  color: #fff;
+  line-height: 50px;
+ // text-align: center;
 }
 .avatar-uploader .el-upload {
   border: 1px dashed #d9d9d9;
@@ -232,4 +229,13 @@ export default {
   height: 178px;
   display: block;
 }
+
+.el-aside:hover {
+  width: 200px;
+  //border-radius: 100px;
+}
+
+
+
+
 </style>
