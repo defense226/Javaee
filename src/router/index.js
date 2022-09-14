@@ -23,7 +23,7 @@ export default new Router({
             component:Login
         },
         {
-            path: '/main',
+            path: '/',
             component: Main,
             redirect:'/welcome',
             //嵌套路由

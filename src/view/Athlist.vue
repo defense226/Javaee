@@ -1,47 +1,31 @@
 <template>
-  <div class="fillcontain">
-    <head-top></head-top>
+  <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>数据管理</el-breadcrumb-item>
       <el-breadcrumb-item>运动员列表</el-breadcrumb-item>
     </el-breadcrumb>
-    <div class="table_container">
-      <el-table
-          :data="tableData"
-          highlight-current-row
-          style="width: 100%">
-        <el-table-column
-            type="index"
-            width="100">
-        </el-table-column>
-        <el-table-column
-            property="registe_time"
-            label="注册日期"
-            width="220">
-        </el-table-column>
-        <el-table-column
-            property="username"
-            label="用户姓名"
-            width="220">
-        </el-table-column>
-        <el-table-column
-            property="city"
-            label="注册地址">
-        </el-table-column>
-      </el-table>
-      <div class="Pagination" style="text-align: left;margin-top: 10px;">
-        <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page="currentPage"
-            :page-size="20"
-            layout="total, prev, pager, next"
-            :total="count">
-        </el-pagination>
+    <el-card>
+      <div>
+
+        <el-row :gutter="25">
+          <el-col :span="9">
+            <el-input placeholder="请输入内容" v-model="queryInfo.query">
+              <el-button slot="append" icon="el-icon-search" @click="getathList"></el-button>
+            </el-input>
+          </el-col>
+          <el-col :span="4">
+            <el-button type="primary">添加运动员</el-button>
+          </el-col>
+        </el-row>
+        <el-table :data="userlist" border stripe>
+          <el-table-column  type="index"></el-table-column>
+          <el-table-column  label="姓名" prop="username"></el-table-column>
+          <el-table-column  label="详情" prop="city"></el-table-column>
+        </el-table>
       </div>
+    </el-card>
     </div>
-  </div>
 </template>
 <script>
 export default {
@@ -49,43 +33,54 @@ export default {
 }
 </script>
 <script>
-//import headTop from '../components/headTop'
-//import {getUserList, getUserCount} from '@/api/getData'
 export default {
   data(){
     return {
-      tableData: [{
-        registe_time: '2016-05-02',
+      queryInfo:{
+        query:'',
+        pagenum:1,
+        pagesize:2
+      },
+      userlist:[{
         username: '王小虎',
         city: '上海市普陀区金沙江路 1518 弄'
       }, {
-        registe_time: '2016-05-04',
         username: '王小虎',
         city: '上海市普陀区金沙江路 1517 弄'
       }, {
-        registe_time: '2016-05-01',
         username: '王小虎',
         city: '上海市普陀区金沙江路 1519 弄'
       }, {
-        registe_time: '2016-05-03',
         username: '王小虎',
         city: '上海市普陀区金沙江路 1516 弄'
       }],
-      currentRow: null,
-      offset: 0,
-      limit: 20,
-      count: 0,
-      currentPage: 1,
+      total:0
+
     }
+  },created() {
+    this.getathList();
   },
+  methods:{
+    async getathList(){
+      const{data:res}= await this.$http.get("http://localhost:8085",{params:this.queryInfo})
+      if(res.meta.status!==200){return this.$message.error('获取列表失败')}
+      this.userlist=res.data.userlist;
+      this.total=res.data.total;
+      console.log(res);
+    }
+  }
 
 
 }
 </script>
 
-<style lang="less">
-@import '../style/mixin';
-.table_container{
-  padding: 20px;
+<style scoped>
+.el-breadcrumb{
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+.el-table{
+  margin-top:15px
+
 }
 </style>
