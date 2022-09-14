@@ -1,14 +1,20 @@
 <template>
   <div>
     <el-form :inline="true" :model="formInline" class="demo-form-inline">
-      <el-form-item label="运动员">
-        <el-select v-model="formInline.ath" placeholder="运动员">
+      <el-form-item label="年份">
+        <el-select v-model="formInline.ath" placeholder="年份">
           <el-option label="a" value="a"></el-option>
           <el-option label="b" value="b"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="包含动作">
-        <el-select v-model="formInline.act" placeholder="包含动作">
+      <el-form-item label="比赛类型">
+        <el-select v-model="formInline.act" placeholder="比赛类型">
+          <el-option label="一周" value="one-turn"></el-option>
+          <el-option label="两周" value="two-turn"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="比赛项目">
+        <el-select v-model="formInline.act" placeholder="比赛项目">
           <el-option label="一周" value="one-turn"></el-option>
           <el-option label="两周" value="two-turn"></el-option>
         </el-select>
@@ -17,6 +23,26 @@
         <el-button type="primary" @click="onSubmit">查询</el-button>
       </el-form-item>
     </el-form>
+
+
+    <el-form :inline="true" :model="formInline" class="demo-form-inline">
+      <el-form-item label="运动员">
+        <el-input v-model="input" placeholder="请输入内容"></el-input>
+      </el-form-item>
+
+
+      <el-form-item>
+        <el-button type="primary" @click="onSubmit2">查询</el-button>
+      </el-form-item>
+    </el-form>
+
+
+
+<!--        <el-input placeholder="请输入内容" v-model="queryInfo.query">-->
+<!--          <el-button slot="append" icon="el-icon-search" @click="getathList"></el-button>-->
+<!--        </el-input>-->
+
+
 
     <el-carousel :interval="3500" height="500px" ref="carousel" @click.native="linkTo">
       <el-carousel-item v-for="item in imgs" :key="item.url" >
@@ -39,7 +65,15 @@
 
 
 
-
+<script>
+export default {
+  data() {
+    return {
+      input: ''
+    }
+  }
+}
+</script>
 <script>
 import axios from "axios";
 export default {
@@ -80,7 +114,11 @@ export default {
 }
 </script>
 <style scoped>
-
+.el-input{
+  width: 200px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
 
 </style>
 
