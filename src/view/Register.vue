@@ -58,7 +58,7 @@ export default {
           return;
         } else {
           // this.$router.push({ path: "/" }); //无需向后台提交数据，方便前台调试
-          const url="http://localhost:8080";//后端地址
+          const url="/account/login";//后端地址
           console.log(typeof this.user.username)
           axios
               .post(url, this.$qs.stringify({

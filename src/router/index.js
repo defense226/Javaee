@@ -12,17 +12,18 @@ import welcome from "../view/welcome";
 import actList from "../view/actList";
 import Athlist from "@/view/Athlist";
 import select from "@/view/Select";
+import Player from "@/view/Player";
 Vue.use(Router)
 
 export default new Router({
     mode: 'hash',
     routes: [
         {
-            path: '/login',
-            component: Login
+            path:"/login",
+            component:Login
         },
         {
-            path: '/',
+            path: '/main',
             component: Main,
             redirect:'/welcome',
             //嵌套路由
@@ -77,8 +78,12 @@ export default new Router({
             redirect: "/Main"
         },
         {
-            path:"/register",
+            path:"/",
             component:Register
+        },
+        {
+            path:"/player",
+            component:Player
         },
     ]
 })
