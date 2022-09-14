@@ -1,7 +1,3 @@
-
-
-
-
 <template>
   <div class="fillcontain">
     <head-top></head-top>
