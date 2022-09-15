@@ -4,7 +4,7 @@
       <head-top></head-top>
       <el-header>
 
-        <span>蹦床管理系统</span>
+        <span>蹦床动作质量评估系统</span>
         <el-button @click="drawer = true" type="primary" round
                    icon="el-icon-s-custom" style="margin-left: 16px;">
         </el-button>
