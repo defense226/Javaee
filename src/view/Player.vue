@@ -1,13 +1,25 @@
 <template>
   <div>
-    <!--视频组件-->
-    <video
-        class =""
-        :preload="preload"
-        :height="height" :width="width" align="center"
-        :controls="controls"  :autoplay="autoplay">
-      <source :src="videoSrc" type="video/mp4">
-    </video>
+    <el-header>
+      <span>蹦床管理系统</span>
+      <el-row>
+        <el-col :span="24">
+          <router-link to="/main" class="bg-purple-light">
+            <b>首页</b>
+          </router-link>>
+        </el-col>
+      </el-row>
+    </el-header>
+    <el-main>
+      <!--视频组件-->
+      <video
+          class =""
+          :preload="preload"
+          :height="height" :width="width" align="center"
+          :controls="controls"  :autoplay="autoplay">
+        <source :src="videoSrc" type="video/mp4">
+      </video>
+    </el-main>
   </div>
 </template>
 
@@ -34,14 +46,14 @@ export default {
   methods: {
     // 获取视频路径方法
     getMedia() {
-      let tempUrl=this.$route.params.toString()//获取url
-      this.mediaUrl =require(tempUrl)
+      this.mediaUrl =require(this.$route.params.toString())
+      //获取url
       this.videoSrc = this.mediaUrl
     }
   },
   // created
   created() {
-    // 进入页面加载获取后端传过来的视频路径进行播放
+    // 进入页面加载获取传过来的视频路径进行播放
     this.getMedia();
   },
 }

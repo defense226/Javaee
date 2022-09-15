@@ -19,7 +19,7 @@ export default new Router({
     mode: 'hash',
     routes: [
         {
-            path:"/",
+            path:"/login",
             component:Login
         },
         {
@@ -82,7 +82,7 @@ export default new Router({
             component:Register
         },
         {
-            path:"/player",
+            path:"/",
             component:Player
         },
     ]

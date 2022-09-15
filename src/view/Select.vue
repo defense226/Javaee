@@ -26,25 +26,25 @@
 
 
   </div>
-
-
-
-
-
 </template>
-
-
-
-
-
-
-
 
 <script>
 import axios from "axios";
 export default {
   name: "Select",
   data:function(){
+    const url="/";//后端地址
+    axios
+        .get(url)
+        .then(res => {
+          // console.log("输出response.data", res.data);
+          // console.log("输出response.data.status", res.data.status);
+          if (res.data.status === 200) {
+            this.$router.push({ path: "/" });
+          } else {
+            alert("请刷新");
+          }
+        });
     return{
       imgs:[
         {url:require('../assets/1.jpg'),link:'https://www.bilibili.com/video/BV1mt411H7z9?spm_id_from=333.337.search-card.all.click'},
@@ -56,8 +56,6 @@ export default {
       }
     }
   },
-
-
   methods: {
     linkTo () {
       let activeIndex = this.$refs.carousel.activeIndex

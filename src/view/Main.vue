@@ -116,7 +116,6 @@
 </template>
 
 <script>
-
 export default {
   name: "Main",
   computed: {
@@ -124,11 +123,6 @@ export default {
       return this.$route.path.replace('/', '');
     }
   },
-}
-</script>
-<script>
-
-export default {
   data() {
     return {
       imageUrl: '',
