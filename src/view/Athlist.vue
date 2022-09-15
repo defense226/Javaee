@@ -15,17 +15,28 @@
             </el-input>
           </el-col>
           <el-col :span="4">
-            <el-button type="primary">添加运动员</el-button>
+            <el-button type="primary" @click="addDialogVisible=true">添加运动员</el-button>
           </el-col>
         </el-row>
-        <el-table :data="userlist" border stripe>
+        <el-table :data="athlist" border stripe>
           <el-table-column  type="index"></el-table-column>
-          <el-table-column  label="姓名" prop="username"></el-table-column>
-          <el-table-column  label="详情" prop="city"></el-table-column>
+          <el-table-column  label="姓名" prop="name"></el-table-column>
+          <el-table-column  label="国籍" prop="country"></el-table-column>
         </el-table>
       </div>
     </el-card>
-    </div>
+    <el-dialog
+        title="提示"
+        :visible.sync="addDialogVisible"
+        width="50%">
+      <span>这是一段信息</span>
+      <span slot="footer" class="dialog-footer">
+    <el-button @click="addDialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="addDialogVisible = false">确 定</el-button>
+  </span>
+    </el-dialog>
+
+  </div>
 </template>
 <script>
 export default {
@@ -41,18 +52,19 @@ export default {
         pagenum:1,
         pagesize:2
       },
-      userlist:[{
-        username: '王小虎',
-        city: '上海市普陀区金沙江路 1518 弄'
+      addDialogVisible:false,
+      athlist:[{
+        name: '王小虎1',
+        country: '中国'
       }, {
-        username: '王小虎',
-        city: '上海市普陀区金沙江路 1517 弄'
+        name: '王小虎2',
+        country: '美国'
       }, {
-        username: '王小虎',
-        city: '上海市普陀区金沙江路 1519 弄'
+        name: '王小虎3',
+        country: '英国'
       }, {
-        username: '王小虎',
-        city: '上海市普陀区金沙江路 1516 弄'
+        name: '王小虎4',
+        country: '法国'
       }],
       total:0
 

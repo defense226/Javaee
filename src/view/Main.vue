@@ -1,6 +1,6 @@
 <template>
-  <div class="home-container">
-    <el-container class="home-container">
+  <div>
+    <el-container>
       <head-top></head-top>
       <el-header>
 
@@ -14,24 +14,10 @@
                    :visible.sync="drawer"
                    :direction="direction"
                    :before-close="handleClose">
-          <!--        <div class="admin_set">-->
-          <head-top></head-top>
           <ul>
             <li>
-              <span>姓名：</span>
-              <!--                <span>{{adminInfo.user_name}}</span>-->
-            </li>
-            <li>
-              <span>注册时间：</span>
-              <!--                <span>{{adminInfo.create_time}}</span>-->
-            </li>
-            <li>
-              <span>管理员权限：</span>
-              <!--                <span>{{adminInfo.admin}}</span>-->
-            </li>
-            <li>
               <span>管理员 ID：</span>
-              <!--                <span>{{adminInfo.id}}</span>-->
+              <!--                 <span>{{adminInfo.id}}</span>-->
             </li>
             <li>
               <span>更换头像：</span>
@@ -44,22 +30,17 @@
                 <img v-if="imageUrl" :src="imageUrl" class="avatar">
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
               </el-upload>
-
             </li>
           </ul>
-
-          <!--        </div>-->
         </el-drawer>
 
 
       </el-header>
 <div class="menu-box">
       <el-container>
-        <el-aside width="200px" >
-          <!--        <el-row style="height: 100%;">-->
-          <!--          <el-col :span="12"  style="min-height: 100%; background-color: #324057;">-->
+        <el-aside width="200px">
           <el-menu  router background-color="#324057" active-text-color="#ffee2b" text-color="#fff"
-                    default-active="defaultActive" :unique-opened="true" :collapse="isCollapse">
+                    default-active="defaultActive" :unique-opened="true" >
             <el-menu-item index="welcome">
               <i id="emotion1" class="el-icon-menu"></i>首页</el-menu-item>
             <el-submenu index="2" active-text-color="#ffee2b">
@@ -68,8 +49,6 @@
               <el-menu-item index="AthList">运动员列表</el-menu-item>
               <el-menu-item index="actList">动作列表</el-menu-item>
               <el-menu-item index="gameInfor">比赛信息</el-menu-item>
-              <!--                <el-menu-item index="orderList">订单列表</el-menu-item>-->
-              <!--                <el-menu-item index="adminList">管理员列表</el-menu-item>-->
             </el-submenu>
             <el-submenu index="3">
               <template slot="title">
@@ -81,18 +60,6 @@
               <template slot="title">
                 <i id="emotion4" class="el-icon-star-on"></i>视频展示</template>
               <el-menu-item index="Select">筛选</el-menu-item>
-              <!-- <el-menu-item index="newMember">用户数据</el-menu-item> -->
-            </el-submenu>
-            <el-submenu index="5">
-              <template slot="title">
-                <i id="emotion5" class="el-icon-edit"></i>编辑</template>
-              <!-- <el-menu-item index="uploadImg">上传图片</el-menu-item> -->
-              <el-menu-item index="vueEdit">文本编辑</el-menu-item>
-            </el-submenu>
-            <el-submenu index="6">
-              <template slot="title"><i class="el-icon-setting"></i>设置</template>
-              <el-menu-item index="adminSet">管理员设置</el-menu-item>
-              <!-- <el-menu-item index="sendMessage">发送通知</el-menu-item> -->
             </el-submenu>
             <el-submenu index="7">
               <template slot="title"><i class="el-icon-warning"></i>说明</template>
@@ -140,12 +107,12 @@ export default {
 </script>
 
 <style lang="less">
-@import '../style/mixin.less';
+
 .home-container{
   height: 100vh;
 }
 .el-main{
-  background-color: #848b8f;
+
 }
 .el-header {
   background-color: #7ba2b7;
@@ -160,19 +127,6 @@ export default {
     align-items: center;
   }
 }
-.admin_set{
-  width: 60%;
-  background-color: #F9FAFC;
-  min-height: 400px;
-  margin: 20px auto 0;
-  border-radius: 10px;
-  ul > li{
-    padding: 20px;
-    span{
-      color: #666;
-    }
-  }
-}
 .el-aside {
   background-color:#324057;
   color: #F5F5F5;
@@ -183,14 +137,10 @@ export default {
   width: 180px;
   height: 700px;
   //border-radius: 30px;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
-  /* 添加过渡 */
-  transition: all .2s ease-out;
-  overflow: hidden;
+
 }
 .admin_title{
   margin-top: 10px;
-  //.sc(24px, #666);
   text-align: center;
 }
 .iconfont{
@@ -198,7 +148,7 @@ export default {
   font-size: 26px !important;
   color: #fff;
   line-height: 50px;
- // text-align: center;
+  text-align: center;
 }
 .avatar-uploader .el-upload {
   border: 1px dashed #d9d9d9;
@@ -206,9 +156,6 @@ export default {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-}
-.avatar-uploader .el-upload:hover {
-  border-color: #409EFF;
 }
 .avatar-uploader-icon {
   font-size: 28px;
@@ -228,8 +175,5 @@ export default {
   width: 200px;
   //border-radius: 100px;
 }
-
-
-
 
 </style>

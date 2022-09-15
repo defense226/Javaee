@@ -38,8 +38,7 @@ export default {
     };
   },
   created() {
-    // console.log($);
-    // console.log("1111");
+
   },
   methods: {
     doRegister() {
