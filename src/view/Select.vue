@@ -8,13 +8,13 @@
         </el-select>
       </el-form-item>
       <el-form-item label="比赛类型">
-        <el-select v-model="formInline.act" placeholder="比赛类型">
+        <el-select v-model="formInline.kind" placeholder="比赛类型">
           <el-option label="一周" value="one-turn"></el-option>
           <el-option label="两周" value="two-turn"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="比赛项目">
-        <el-select v-model="formInline.act" placeholder="比赛项目">
+        <el-select v-model="formInline.item" placeholder="比赛项目">
           <el-option label="一周" value="one-turn"></el-option>
           <el-option label="两周" value="two-turn"></el-option>
         </el-select>
@@ -25,9 +25,9 @@
     </el-form>
 
 
-    <el-form :inline="true" :model="formInline" class="demo-form-inline">
+    <el-form :inline="true" :model="formInline2" class="demo-form-inline">
       <el-form-item label="运动员">
-        <el-input v-model="input" placeholder="请输入内容"></el-input>
+        <el-input v-model="formInline2.name" placeholder="请输入运动员"></el-input>
       </el-form-item>
 
 
@@ -78,7 +78,11 @@ export default {
       ],
       formInline: {
         ath: '',
-        act: ''
+        kind: '',
+        item:''
+      },
+      formInline2:{
+        name:''
       }
     }
   },
@@ -92,14 +96,34 @@ export default {
     onSubmit() {
       console.log('submit!');
       console.log(this.formInline.ath);
-      console.log(this.formInline.act);
+      console.log(this.formInline.kind);
+      console.log(this.formInline.item);
+      console.log(require('../assets/1.jpg'));
       axios
           .post("http://localhost:8085", {
             ath: this.formInline.ath,
-            act: this.formInline.act
+            kind: this.formInline.kind,
+            item: this.formInline.item
           })
           .then(res => {
             console.log(res);
+            for(var key in res){
+              this.imgs.push({'url':'require('+key+')','link':res[key]});
+            }
+          });
+    },
+    onSubmit2() {
+      console.log('submit!');
+      console.log(this.formInline2.name);
+      axios
+          .post("http://localhost:8085", {
+           name:this.formInline2.name
+          })
+          .then(res => {
+            console.log(res);
+            for(var key in res){
+              this.imgs.push({'url':'require('+key+')','link':res[key]});
+            }
           });
     }
   }

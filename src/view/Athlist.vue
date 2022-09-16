@@ -63,20 +63,8 @@ export default {
         pagesize:2
       },
       Visible:false,
-      athlist:[{
-        name: '王小虎1',
-        country: '中国'
-      }, {
-        name: '王小虎2',
-        country: '美国'
-      }, {
-        name: '王小虎3',
-        country: '英国'
-      }, {
-        name: '王小虎4',
-        country: '法国'
-      }],
-      total:0,
+      athlist:[],
+      total:'',
       addForm:{
         name:'',
         country:''
@@ -100,10 +88,12 @@ export default {
   methods:{
     async getathList(){
       const{data:res}= await this.$http.get("http://localhost:8085",{params:this.queryInfo})
-      if(res.meta.status!==200){return this.$message.error('获取列表失败')}
-      this.userlist=res.data.userlist;
-      this.total=res.data.total;
-      console.log(res);
+      for(var key in res){
+        this.athlist.push({'name':key,'country':res[key]});
+      }
+
+      console.log(this.athlist);
+
     },
     Close1(){
       this.$refs.addFormRef.resetFields()
@@ -112,9 +102,13 @@ export default {
       this.$refs.addFormRef.validate(async valid=>{
         //预验证
         if(!valid)return error("error");
-        const{data:res}=await this.$http.post("http://localhost:8085",this.addForm)
-        if(res.meta.status!==201){ this.$message.error('添加运动员失败')}
-        this.$message.error('添加运动员成功')
+        const{data:res}=await this.$http.post("http://localhost:8085/athlete/athlist",this.addForm)
+        for(var key in res){
+          this.athlist.push({'name':key,'country':res[key]});
+        }
+        
+        console.log(this.athlist);
+        this.$message.success('添加运动员成功')
         //隐藏对话框
         this.Visible=false
         //重新获取数据

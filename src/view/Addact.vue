@@ -1,7 +1,7 @@
 <template>
-<div>
-  添加动作
-</div>
+  <div>
+    添加动作
+  </div>
 </template>
 
 <script>

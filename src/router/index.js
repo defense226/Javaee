@@ -6,8 +6,8 @@ import List from "../view/user/List";
 import Profile from "../view/user/Profile";
 import Register from "../view/Register";
 import gameInfor from "@/view/gameInfor";
-import Addath from "@/view/Addath";
-import Addact from "@/view/Addact";
+import Addath from "../view/Addath";
+import Addact from "../view/Addact";
 import welcome from "../view/welcome";
 import actList from "../view/actList";
 import Athlist from "@/view/Athlist";
@@ -49,21 +49,20 @@ export default new Router({
                 },{
                     path: '/AthList',
                     component: Athlist,
-                }
+                },{
+                    path: '/Addath',
+                    component: Addath,
+                },{
+                    path: '/Addact',
+                    component: Addact,
+                },
             ]
         },
         {
             path: '/Main',
             component: Main,
             children:[
-                {
-                    path: '/Addath',
-                    component: Addath,
-                },{
-                    path: '/Addact',
-                    component: Addact,
-                },{
-                    path: '/Select',
+                {path: '/Select',
                     component: select,
                 },
             ]

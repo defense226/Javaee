@@ -16,7 +16,7 @@
                    :before-close="handleClose">
           <ul>
             <li>
-              <span>管理员 ID：</span>
+              <span>账号：</span>
               <!--                 <span>{{adminInfo.id}}</span>-->
             </li>
             <li>
@@ -40,21 +40,21 @@
       <el-container>
         <el-aside width="200px">
           <el-menu  router background-color="#324057" active-text-color="#ffee2b" text-color="#fff"
-                    default-active="defaultActive" :unique-opened="true" >
+                  :unique-opened="true" >
             <el-menu-item index="welcome">
               <i id="emotion1" class="el-icon-menu"></i>首页</el-menu-item>
             <el-submenu index="2" active-text-color="#ffee2b">
               <template slot="title">
                 <i id="emotion3" class="el-icon-document"></i>数据管理</template>
               <el-menu-item index="AthList">运动员列表</el-menu-item>
-              <el-menu-item index="actList">动作列表</el-menu-item>
-              <el-menu-item index="gameInfor">比赛信息</el-menu-item>
+              <el-menu-item index="actList">比赛信息</el-menu-item>
+              <el-menu-item index="gameInfor">无</el-menu-item>
             </el-submenu>
             <el-submenu index="3">
               <template slot="title">
                 <i id="emotion3" class="el-icon-plus"></i><span>添加数据</span></template>
               <el-menu-item index="Addath"><span>添加运动员</span></el-menu-item>
-              <el-menu-item index="Addact"><span>添加动作</span></el-menu-item>
+              <el-menu-item index="Addact"><span>添加比赛信息</span></el-menu-item>
             </el-submenu>
             <el-submenu index="4">
               <template slot="title">
@@ -175,5 +175,10 @@ export default {
   width: 200px;
   //border-radius: 100px;
 }
-
+.el-menu-item.is-active {
+  color: #fff;
+  span {
+    color: #fff !important;
+  }
+}
 </style>

@@ -3,7 +3,7 @@
   <el-breadcrumb separator-class="el-icon-arrow-right">
     <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
     <el-breadcrumb-item>数据管理</el-breadcrumb-item>
-    <el-breadcrumb-item>动作列表</el-breadcrumb-item>
+    <el-breadcrumb-item>比赛信息</el-breadcrumb-item>
   </el-breadcrumb>
   <el-card>
     <div>
@@ -14,13 +14,13 @@
         </el-input>
         </el-col>
         <el-col :span="4">
-          <el-button type="primary">添加用户</el-button>
+          <el-button type="primary">添加信息</el-button>
         </el-col>
       </el-row>
       <el-table :data="userlist" border stripe>
         <el-table-column  type="index"></el-table-column>
-        <el-table-column  label="姓名" prop="username"></el-table-column>
-        <el-table-column  label="详情" prop="city"></el-table-column>
+        <el-table-column  label="比赛类型" prop="username"></el-table-column>
+        <el-table-column  label="项目名称" prop="city"></el-table-column>
       </el-table>
     </div>
   </el-card>
@@ -39,17 +39,17 @@ export default {
         pagesize:2
       },
       userlist:[{
-        username: '王小虎',
-        city: '上海市普陀区金沙江路 1518 弄'
+        username: '世锦赛',
+        city: '2021年xxx赛'
       }, {
-        username: '王小虎',
-        city: '上海市普陀区金沙江路 1517 弄'
+        username: '世锦赛',
+        city: '2020年中国xx赛'
       }, {
-        username: '王小虎',
-        city: '上海市普陀区金沙江路 1519 弄'
+        username: '全运会',
+        city: '全国男子xx赛'
       }, {
-        username: '王小虎',
-        city: '上海市普陀区金沙江路 1516 弄'
+        username: '全运会',
+        city: '全国女子团体xx赛'
       }],
       total:0
 
