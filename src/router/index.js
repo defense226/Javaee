@@ -13,6 +13,7 @@ import actList from "../view/actList";
 import Athlist from "@/view/Athlist";
 import select from "@/view/Select";
 import Player from "@/view/Player";
+import explain from "@/view/explain";
 Vue.use(Router)
 
 export default new Router({
@@ -55,6 +56,9 @@ export default new Router({
                 },{
                     path: '/Addact',
                     component: Addact,
+                },{
+                    path: '/explain',
+                    component: explain,
                 },
             ]
         },

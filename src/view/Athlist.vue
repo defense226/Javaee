@@ -82,9 +82,10 @@ export default {
         ]
       }
     }
-  },created() {
-    this.getathList();
   },
+  // created() {
+  //   this.getathList();
+  // },
   methods:{
     async getathList(){
       const{data:res}= await this.$http.get("http://localhost:8085",{params:this.queryInfo})

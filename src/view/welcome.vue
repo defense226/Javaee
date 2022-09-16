@@ -1,6 +1,6 @@
 <template>
   <div>
-
+首页
   </div>
 
 
@@ -16,9 +16,7 @@ export default {
   methods: {
 
   },
-  data:function(){
 
-  }
 }
 </script>
 

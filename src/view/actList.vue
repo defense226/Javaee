@@ -55,9 +55,9 @@ export default {
 
     }
   },
-  created() {
-  this.getactList();
-  },
+  // created() {
+  // this.getactList();
+  // },
   methods:{
     async getactList(){
       const{data:res}= await this.$http.get("http://localhost:8085",{params:this.queryInfo})

@@ -1,12 +1,10 @@
 <template>
-  <div>
-    添加比赛信息
-  </div>
+<div>说明</div>
 </template>
 
 <script>
 export default {
-  name: "Addact"
+  name: "explain"
 }
 </script>
 

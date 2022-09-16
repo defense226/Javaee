@@ -73,8 +73,8 @@ export default {
   data:function(){
     return{
       imgs:[
-        {url:require('../assets/1.jpg'),link:'https://www.bilibili.com/video/BV1mt411H7z9?spm_id_from=333.337.search-card.all.click'},
-        {url:require('../assets/2.jpg'),link:'https://www.bilibili.com/video/BV1XT4y1Z76R?spm_id_from=333.337.search-card.all.click'}
+         {url:require('../assets/1.jpg'),link:'https://www.bilibili.com/video/BV1mt411H7z9?spm_id_from=333.337.search-card.all.click'},
+        // {url:require('../assets/2.jpg'),link:'https://www.bilibili.com/video/BV1XT4y1Z76R?spm_id_from=333.337.search-card.all.click'}
       ],
       formInline: {
         ath: '',
@@ -95,35 +95,34 @@ export default {
     },
     onSubmit() {
       console.log('submit!');
-      console.log(this.formInline.ath);
-      console.log(this.formInline.kind);
-      console.log(this.formInline.item);
-      console.log(require('../assets/1.jpg'));
       axios
-          .post("http://localhost:8085", {
+          .post("http://localhost:8085/video/play", {
             ath: this.formInline.ath,
             kind: this.formInline.kind,
             item: this.formInline.item
           })
           .then(res => {
             console.log(res);
-            for(var key in res){
-              this.imgs.push({'url':'require('+key+')','link':res[key]});
+            console.log(res.data);
+            for(var key in res.data){
+              this.imgs.push({'url':require('../assets/'+key),'link':res.data[key]});
             }
+            console.log(this.imgs);
           });
     },
     onSubmit2() {
       console.log('submit!');
       console.log(this.formInline2.name);
       axios
-          .post("http://localhost:8085", {
+          .post("http://localhost:8085/video/play", {
            name:this.formInline2.name
           })
           .then(res => {
             console.log(res);
-            for(var key in res){
-              this.imgs.push({'url':'require('+key+')','link':res[key]});
+            for(var key in res.data){
+              this.imgs.push({'url':require('../assets/'+key),'link':res.data[key]});
             }
+            console.log(this.imgs);
           });
     }
   }
