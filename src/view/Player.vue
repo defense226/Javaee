@@ -46,8 +46,7 @@ export default {
   methods: {
     // 获取视频路径方法
     getMedia() {
-      console.log(this.$route.params.videoUrl)
-      this.mediaUrl =require(this.$route.params.videoUrl)
+      this.mediaUrl =require('@/assets'+`${this.$route.query.videoUrl.toString()}`)
       //获取url
       this.videoSrc = this.mediaUrl
     }
@@ -55,7 +54,6 @@ export default {
   // created
   created() {
     // 进入页面加载获取传过来的视频路径进行播放
-    console.log(1)
     this.getMedia();
   },
 }

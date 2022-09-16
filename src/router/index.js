@@ -82,7 +82,7 @@ export default new Router({
             component:Register
         },
         {
-            path:"/player/:videoUrl",
+            path:"/player",
             name:"player",
             component:Player
         },

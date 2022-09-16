@@ -23,48 +23,24 @@
         <el-button type="primary" @click="onSubmit">查询</el-button>
       </el-form-item>
     </el-form>
-
-
     <el-form :inline="true" :model="formInline2" class="demo-form-inline">
       <el-form-item label="运动员">
         <el-input v-model="formInline2.name" placeholder="请输入运动员"></el-input>
       </el-form-item>
-
-
       <el-form-item>
         <el-button type="primary" @click="onSubmit2">查询</el-button>
       </el-form-item>
     </el-form>
-
-
-
 <!--        <el-input placeholder="请输入内容" v-model="queryInfo.query">-->
 <!--          <el-button slot="append" icon="el-icon-search" @click="getathList"></el-button>-->
 <!--        </el-input>-->
-
-
-
     <el-carousel :interval="3500" height="500px" ref="carousel" @click.native="linkTo">
       <el-carousel-item v-for="item in imgs" :key="item.url" >
         <img :src="item.url"  style="width:100%;height:100%" />
       </el-carousel-item>
     </el-carousel>
-
-
   </div>
-
-
-
-
-
 </template>
-
-
-
-
-
-
-
 
 <script>
 import axios from "axios";
@@ -92,12 +68,13 @@ export default {
     /*eslint-disable*/
     linkTo(){
       let activeIndex = this.$refs.carousel.activeIndex
-      let videoUrl=this.imgs[activeIndex].link
-      videoUrl='/player/assets/1.mp4'
+      let videoLink=this.imgs[activeIndex].link
       this.$router.push({
-        path:videoUrl
+        name: `player`,　　　　　// 只是把query改了，其他都没变
+        query: {
+          videoUrl:videoLink
+        }
       })
-      // window.open(this.imgs[activeIndex].link,"_blank")
     },
     onSubmit() {
       console.log('submit!');
