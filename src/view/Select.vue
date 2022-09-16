@@ -1,5 +1,10 @@
 <template>
   <div>
+    <el-breadcrumb separator-class="el-icon-arrow-right">
+      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>视频展示</el-breadcrumb-item>
+      <el-breadcrumb-item>筛选</el-breadcrumb-item>
+    </el-breadcrumb>
     <el-form :inline="true" :model="formInline" class="demo-form-inline">
       <el-form-item label="运动员">
         <el-select v-model="formInline.ath" placeholder="运动员">
@@ -58,14 +63,6 @@
 
 
 </template>
-
-
-
-
-
-
-
-
 <script>
 import axios from "axios";
 export default {
@@ -130,6 +127,12 @@ export default {
 </script>
 <style scoped>
 
-
+.el-breadcrumb{
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+.el-table{
+  margin-top:15px
+}
 </style>
 

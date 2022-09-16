@@ -1,9 +1,13 @@
+<head>
+
+</head>
 <template>
   <div>
     <el-container>
       <el-header>
 
         <span>蹦床动作质量评估系统</span>
+
         <el-button @click="drawer = true" type="primary" round
                    icon="el-icon-s-custom" style="margin-left: 16px;">
         </el-button>
@@ -39,30 +43,35 @@
         <el-aside width="200px">
           <el-menu  router background-color="#324057" active-text-color="#ffee2b" text-color="#fff"
                   :unique-opened="true" >
+            <div class="emotion-box" @click="jump">
+              <i id="emotion1" class="iconfont icon-wukongbiaoqing"></i>
+              <i id="emotion2" class="iconfont icon-chenggongbiaoqing"></i>
+            </div>
             <el-menu-item index="welcome">
-              <i id="emotion1" class="el-icon-menu"></i>首页</el-menu-item>
+              <i class="el-icon-menu"></i>首页</el-menu-item>
             <el-submenu index="2" active-text-color="#ffee2b">
               <template slot="title">
-                <i id="emotion3" class="el-icon-document"></i>数据管理</template>
+                <i class="el-icon-document"></i>数据管理</template>
               <el-menu-item index="AthList">运动员列表</el-menu-item>
               <el-menu-item index="actList">比赛信息</el-menu-item>
               <el-menu-item index="gameInfor">无</el-menu-item>
             </el-submenu>
             <el-submenu index="3">
               <template slot="title">
-                <i id="emotion3" class="el-icon-plus"></i><span>添加数据</span></template>
+                <i class="el-icon-plus"></i><span>添加数据</span></template>
               <el-menu-item index="Addath"><span>添加运动员</span></el-menu-item>
               <el-menu-item index="Addact"><span>添加比赛信息</span></el-menu-item>
             </el-submenu>
             <el-submenu index="4">
               <template slot="title">
-                <i id="emotion4" class="el-icon-star-on"></i>视频展示</template>
+                <i class="el-icon-star-on"></i>视频展示</template>
               <el-menu-item index="Select">筛选</el-menu-item>
             </el-submenu>
-            <el-submenu index="7">
+            <el-submenu index="5">
               <template slot="title"><i class="el-icon-warning"></i>说明</template>
               <el-menu-item index="explain">说明</el-menu-item>
             </el-submenu>
+
           </el-menu>
 
         </el-aside>
@@ -90,25 +99,26 @@ export default {
   },
   data() {
     return {
+      isCollapse: false,
       imageUrl: '',
       drawer: false,
     };
   },
-  created() {
-    this.get
-  },
-  methods: {
-
+  methods:{
+    created() {
+    },
+    jump(){
+     // animation: jitter .3s linear forwards;
+    }
   }
+
 }
 
 </script>
 
 <style lang="less">
 
-.home-container{
-  height: 100vh;
-}
+
 .el-main{
 
 }
@@ -143,7 +153,7 @@ export default {
 }
 .iconfont{
   margin-right:10px;
-  font-size: 26px !important;
+  font-size: 25px !important;
   color: #fff;
   line-height: 50px;
   text-align: center;
@@ -173,10 +183,61 @@ export default {
   width: 200px;
   //border-radius: 100px;
 }
-.el-menu-item.is-active {
-  color: #fff;
-  span {
-    color: #fff !important;
+
+
+/* 抖动动画 */
+@keyframes jitter {
+  0% {
+    /* 缩放1.2倍，顺时针旋转10° */
+    transform: scale(1.3) rotate(10deg);
+  }
+
+  50% {
+    transform: scale(0.7) rotate(-10deg);
+  }
+
+  100% {
+    transform: scale(1.0) rotate(0deg);
   }
 }
+.el-menu-item:hover i{
+  animation: jitter .3s linear forwards;
+  color: #fff;
+}
+.el-submenu:hover i{
+  animation: jitter .3s linear forwards;
+  color: #fff;
+}
+.el-menu i{
+  size:50px;
+}
+.emotion-box {
+  width: 100%;
+  text-align: center;
+  margin: 10px auto;
+
+}
+.emotion-box:active{
+  animation: jitter .3s linear forwards;
+}
+#emotion1,
+#emotion2 {
+  color: #faf7f7;
+  font-size: 27px !important;
+  animation: jitter .3s linear forwards;
+}
+
+#emotion2 {
+  display: none;
+}
+
+.el-menu:hover #emotion1 {
+  display: none;
+}
+
+.el-menu:hover #emotion2 {
+  display: block;
+}
+
+
 </style>

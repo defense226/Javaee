@@ -22,6 +22,8 @@
           <el-table-column  type="index"></el-table-column>
           <el-table-column  label="姓名" prop="name"></el-table-column>
           <el-table-column  label="国籍" prop="country"></el-table-column>
+          <el-table-column  label="生日" prop="DOB"></el-table-column>
+          <el-table-column  label="性别" prop="sex"></el-table-column>
         </el-table>
       </div>
     </el-card>
@@ -36,6 +38,14 @@
         </el-form-item>
         <el-form-item label="国籍" prop="country">
           <el-input v-model="addForm.country"></el-input>
+        </el-form-item>
+        <el-form-item label="生日">
+          <el-col :span="11">
+            <el-date-picker type="date" placeholder="选择日期" v-model="addForm.DOB" style="width: 100%;"></el-date-picker>
+          </el-col>
+        </el-form-item>
+        <el-form-item label="性别" prop="sex">
+          <el-input v-model="addForm.sex"></el-input>
         </el-form-item>
       </el-form>
 
@@ -57,6 +67,7 @@ export default {
 export default {
   data(){
     return {
+
       queryInfo:{
         query:'',
         pagenum:1,
@@ -67,7 +78,9 @@ export default {
       total:'',
       addForm:{
         name:'',
-        country:''
+        country:'',
+        DOB:'',
+        sex:''
       },
       addFormRules:{
         name:[
@@ -79,18 +92,23 @@ export default {
           {required:true,message:'请输入运动员国籍',trigger:'blur'},
           {min:2,max:20,message: '国籍在2~20字符之间',trigger: 'blur'
           }
+        ],
+        sex:[
+          {required:true,message:'请输入运动员性别',trigger:'blur'},
+          {min:1,max:1,message: '请输入正确类型',trigger: 'blur'
+          }
         ]
       }
     }
   },
-  // created() {
-  //   this.getathList();
-  // },
+  created() {
+    this.getathList();
+  },
   methods:{
     async getathList(){
       const{data:res}= await this.$http.get("http://localhost:8085",{params:this.queryInfo})
       for(var key in res){
-        this.athlist.push({'name':key,'country':res[key]});
+        this.athlist.push({'name':key,'country':res[key],'DOB':res.DOB,'sex':res.sex});
       }
 
       console.log(this.athlist);

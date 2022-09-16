@@ -8,6 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import qs from 'qs'
 // 引入video.js
 import 'video.js/dist/video-js.css';
+import './font/iconfont.css';
 Vue.prototype.$qs = qs
 Vue.config.productionTip = false
 //在vue中使用elementui
