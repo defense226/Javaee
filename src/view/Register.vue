@@ -15,6 +15,7 @@
           <el-form-item prop="userPassword" label="设置密码">
             <el-input v-model="user.password" show-password placeholder="请输入密码"></el-input>
           </el-form-item>
+          <router-link to="/">登陆</router-link>
           <el-form-item>
             <el-button type="primary" icon @click="doRegister()">注册账号</el-button>
           </el-form-item>
@@ -56,17 +57,18 @@ export default {
           this.$message.error("请输入密码！");
           return;
         } else {
-          const url="/account/login";//后端地址
+          const url="http://localhost:8085/account/register";//后端地址
           axios
               .post(url, this.$qs.stringify({
                 'name': this.user.username,
                 'email': this.user.email,
                 'password': this.user.password
               }))
-              .then(res => {
-                // console.log("输出response.data", res.data);
+              .then(res => {  
+                console.log("输出response.data", res.data);
                 // console.log("输出response.data.status", res.data.status);
-                if (res.data.status === 200) {
+                if (res.data === 200) {
+                  this.$message.success("注册成功！");
                   this.$router.push({ path: "/" });
                 } else {
                   alert("您输入的用户名已存在！");
