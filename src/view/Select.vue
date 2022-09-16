@@ -6,22 +6,30 @@
       <el-breadcrumb-item>筛选</el-breadcrumb-item>
     </el-breadcrumb>
     <el-form :inline="true" :model="formInline" class="demo-form-inline">
-      <el-form-item label="运动员">
-        <el-select v-model="formInline.ath" placeholder="运动员">
-          <el-option label="a" value="a"></el-option>
-          <el-option label="b" value="b"></el-option>
-        </el-select>
+      <el-form-item label="年份">
+        <el-date-picker
+            v-model="formInline.ath"
+            type="year"
+            placeholder="选择年">
+        </el-date-picker>
+
+
+
+
+
       </el-form-item>
       <el-form-item label="比赛类型">
         <el-select v-model="formInline.kind" placeholder="比赛类型">
-          <el-option label="一周" value="one-turn"></el-option>
-          <el-option label="两周" value="two-turn"></el-option>
+          <el-option label="世锦赛" value="shijinsai"></el-option>
+          <el-option label="奥运会" value="aoyunhui"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="比赛项目">
         <el-select v-model="formInline.item" placeholder="比赛项目">
-          <el-option label="一周" value="one-turn"></el-option>
-          <el-option label="两周" value="two-turn"></el-option>
+          <el-option label="男子单跳" value="malejump"></el-option>
+          <el-option label="女子单跳" value="femalejump"></el-option>
+          <el-option label="男子网上" value="maleweb"></el-option>
+          <el-option label="女子网上" value="femaleweb"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item>
