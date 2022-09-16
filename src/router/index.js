@@ -6,14 +6,13 @@ import List from "../view/user/List";
 import Profile from "../view/user/Profile";
 import Register from "../view/Register";
 import gameInfor from "@/view/gameInfor";
-import Addath from "../view/Addath";
-import Addact from "../view/Addact";
+import Addath from "@/view/Addath";
+import Addact from "@/view/Addact";
 import welcome from "../view/welcome";
 import actList from "../view/actList";
 import Athlist from "@/view/Athlist";
 import select from "@/view/Select";
 import Player from "@/view/Player";
-import explain from "@/view/explain";
 Vue.use(Router)
 
 export default new Router({
@@ -24,7 +23,7 @@ export default new Router({
             component:Login
         },
         {
-            path: '/main',
+            path: '/',
             component: Main,
             redirect:'/welcome',
             //嵌套路由
@@ -50,29 +49,27 @@ export default new Router({
                 },{
                     path: '/AthList',
                     component: Athlist,
-                },{
-                    path: '/Addath',
-                    component: Addath,
-                },{
-                    path: '/Addact',
-                    component: Addact,
-                },{
-                    path: '/explain',
-                    component: explain,
-                },
+                }
             ]
         },
         {
             path: '/Main',
             component: Main,
             children:[
-                {path: '/Select',
+                {
+                    path: '/Addath',
+                    component: Addath,
+                },{
+                    path: '/Addact',
+                    component: Addact,
+                },{
+                    path: '/Select',
                     component: select,
                 },
             ]
         },
         {
-            path: "/user/profile/:id",
+            path: "/user/profile",
             component: Profile,
             props: true //添加这一行表示开启props传参
         },
@@ -85,7 +82,8 @@ export default new Router({
             component:Register
         },
         {
-            path:"/",
+            path:"/player/:videoUrl",
+            name:"player",
             component:Player
         },
     ]

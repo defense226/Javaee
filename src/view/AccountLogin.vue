@@ -45,24 +45,23 @@ export default {
         return;
       } else {
         //校验用户名和密码是否正确;
-        // this.$router.push({ path: "/personal" });
-        console.log(this.user.password)
-        console.log(this.user.username)
-        const url="http://localhost:8080/";//后端地址
+        let postData={
+          'name': this.user.username,
+          'password': this.user.password
+        }
+        const url="http://localhost:8085/account/login";//后端地址
         axios
-            .post(url,this.$qs.stringify({
-              'name': this.user.username,
-              'password': this.user.password
-            }))
+            .post(url,this.$qs.stringify(
+              postData
+            ))
             .then(res => {
-              // console.log("输出response.data.status", res.data.status);
-              if (res.data.status === 200) {
+              console.log(res);
+              if (res.data === 200) {
                 this.$router.push({ path: "/main" });
               } else {
                 alert("您输入的用户名或密码错误！");
               }
             });
-        this.$router.push({ path: "/main" });
       }
     }
   }
