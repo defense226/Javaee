@@ -19,8 +19,8 @@
       </el-row>
       <el-table :data="userlist" border stripe>
         <el-table-column  type="index"></el-table-column>
-        <el-table-column  label="比赛类型" prop="username"></el-table-column>
-        <el-table-column  label="项目名称" prop="city"></el-table-column>
+        <el-table-column  label="比赛名称" prop="name"></el-table-column>
+        <el-table-column  label="项目类型" prop="type"></el-table-column>
       </el-table>
     </div>
   </el-card>
@@ -38,19 +38,7 @@ export default {
         pagenum:1,
         pagesize:2
       },
-      userlist:[{
-        username: '世锦赛',
-        city: '2021年xxx赛'
-      }, {
-        username: '世锦赛',
-        city: '2020年中国xx赛'
-      }, {
-        username: '全运会',
-        city: '全国男子xx赛'
-      }, {
-        username: '全运会',
-        city: '全国女子团体xx赛'
-      }],
+      userlist:[],
       total:0
 
     }
@@ -60,10 +48,8 @@ export default {
   // },
   methods:{
     async getactList(){
-      const{data:res}= await this.$http.get("http://localhost:8085",{params:this.queryInfo})
-      if(res.meta.status!==200){return this.$message.error('获取列表失败')}
-      this.userlist=res.data.userlist;
-      this.total=res.data.total;
+      const{data:res}= await this.$http.post("http://localhost:8085/game/gamelist",{params:this.queryInfo})
+      this.userlist=eval('('+res+')');
       console.log(res);
     }
   }
