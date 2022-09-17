@@ -19,13 +19,9 @@
       </el-row>
       <el-table :data="actlist" border stripe>
         <el-table-column  type="index"></el-table-column>
-<<<<<<< Updated upstream
-        <el-table-column  label="比赛名称" prop="name"></el-table-column>
-        <el-table-column  label="项目类型" prop="type"></el-table-column>
-=======
+
         <el-table-column  label="比赛类型" prop="kind"></el-table-column>
         <el-table-column  label="项目名称" prop="name"></el-table-column>
->>>>>>> Stashed changes
       </el-table>
     </div>
   </el-card>
@@ -78,9 +74,8 @@ export default {
         pagenum:1,
         pagesize:2
       },
-<<<<<<< Updated upstream
       userlist:[],
-=======
+
       actlist:[{
         kind: '世锦赛',
         name: '2021年xxx赛'
@@ -94,8 +89,6 @@ export default {
         kind: '全运会',
         name: '全国女子团体xx赛'
       }],
->>>>>>> Stashed changes
-      total:0
 
     }
   },
@@ -104,15 +97,12 @@ export default {
   },
   methods:{
     async getactList(){
-<<<<<<< Updated upstream
+
       const{data:res}= await this.$http.post("http://localhost:8085/game/gamelist",{params:this.queryInfo})
       this.userlist=eval('('+res+')');
       console.log(res);
-=======
-      const{data:res}= await this.$http.get("http://localhost:8085",{params:this.queryInfo})
-      for(var key in res){
-        this.actlist.push({'kind':key,'name':res[key]});
-      }
+
+
 
 
     },Close1(){
@@ -126,7 +116,6 @@ addAth(){
     const{data:res}=await this.$http.post("http://localhost:8085/athlete/athlist",this.addForm)
     for(var key in res){
       this.actlist.push({'kind':key,'name':res[key]});
->>>>>>> Stashed changes
     }
 
     this.$message.success('添加信息成功')

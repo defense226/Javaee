@@ -10,11 +10,7 @@
 
         <el-row :gutter="25">
           <el-col :span="9">
-<<<<<<< Updated upstream
-            <el-input placeholder="请输入内容" v-model="queryInfo.query">
-              <el-button slot="append" icon="el-icon-search" @click="getathList"></el-button>
-            </el-input>
-=======
+
 
               <el-button  icon="el-icon-refresh-right" @click="getathList"></el-button>
 
@@ -34,7 +30,6 @@
               </el-form-item>
             </el-form>
 
->>>>>>> Stashed changes
           </el-col>
           <el-col :span="4">
             <el-button type="primary" @click="Visible=true">添加运动员</el-button>
@@ -55,16 +50,16 @@
         width="50%" @close="Close1">
 
       <el-form :model="addForm" :rules="addFormRules" ref="addFormRef" label-width="70px" >
-<<<<<<< Updated upstream
+
         <el-form-item label="运动员" prop="name">
           <el-input v-model="addForm.name"></el-input>
-=======
-        <el-form-item label="姓" prop="lname">
-          <el-input v-model="addForm.lname"></el-input>
-        </el-form-item>
-        <el-form-item label="名" prop="fname">
-          <el-input v-model="addForm.lname"></el-input>
->>>>>>> Stashed changes
+
+<!--        <el-form-item label="姓" prop="lname">-->
+<!--          <el-input v-model="addForm.lname"></el-input>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="名" prop="fname">-->
+<!--          <el-input v-model="addForm.lname"></el-input>-->
+
         </el-form-item>
         <el-form-item label="国籍" prop="country">
           <el-input v-model="addForm.country"></el-input>
@@ -149,15 +144,12 @@ export default {
       this.$refs.addFormRef.validate(async valid=>{
         //预验证
         if(!valid)return error("error");
-<<<<<<< Updated upstream
-        const{data:res}=await this.$http.post("http://localhost:8085/athlete/addAth",this.addForm)       
-=======
+
         const{data:res}=await this.$http.post("http://localhost:8085/athlete/athlist",this.addForm)
         for(var key in res){
           this.athlist.push({'name':key,'country':res[key]});
         }
 
->>>>>>> Stashed changes
         console.log(this.athlist);
         this.$message.success('添加运动员成功')
         //隐藏对话框
