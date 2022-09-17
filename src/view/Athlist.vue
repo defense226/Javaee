@@ -10,9 +10,19 @@
 
         <el-row :gutter="25">
           <el-col :span="9">
-            <el-input placeholder="请输入内容" v-model="queryInfo.query">
-              <el-button slot="append" icon="el-icon-search" @click="getathList"></el-button>
-            </el-input>
+
+              <el-button  icon="el-icon-refresh-right" @click="getathList"></el-button>
+
+            <el-autocomplete
+                class="inline-input"
+                v-model="state1"
+                :fetch-suggestions="querySearch"
+                placeholder="请输入内容"
+                @select="handleSelect">
+<!--                :trigger-on-focus="false"-->
+<!--                >-->
+              <el-button slot="append" icon="el-icon-search" @click="searchList"></el-button>
+            </el-autocomplete>
           </el-col>
           <el-col :span="4">
             <el-button type="primary" @click="Visible=true">添加运动员</el-button>
@@ -67,7 +77,8 @@ export default {
 export default {
   data(){
     return {
-
+      state1:'',
+Search:[],
       queryInfo:{
         query:'',
         pagenum:1,
@@ -134,8 +145,35 @@ export default {
         this.getathList()
       })
 
+    },
+  querySearch(queryString, cb) {
+    var Search = this.Search;
+    var results = queryString ? Search.filter(this.createFilter(queryString)) : Search;
+    // 调用 callback 返回建议列表的数据
+    cb(results);
+  },
+  createFilter(queryString) {
+    return (name) => {
+      return (name.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+    };
+  },
+    loadAll() {
+      return [
+        { "name": "李铭扬", "country": "China","sex":"male","DOB":"2000-0-0" },
+        { "name": "李金泽", "country": "China","sex":"male","DOB":"2000-0-0" },
+        { "name": "黄奕天", "country": "China","sex":"male","DOB":"2000-0-0" },
+        { "name": "冯敏言", "country": "China","sex":"male","DOB":"2000-0-0" },
+        { "name": "张嘉航", "country": "China","sex":"female","DOB":"2000-0-0" },
+
+      ];
+    },
+    mounted() {
+      this.athlist = this.loadAll();
+    },handleSelect(item) {
+      console.log(item);
     }
   }
+
 
 
 }
