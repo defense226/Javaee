@@ -13,16 +13,22 @@
 
               <el-button  icon="el-icon-refresh-right" @click="getathList"></el-button>
 
-            <el-autocomplete
-                class="inline-input"
-                v-model="state1"
-                :fetch-suggestions="querySearch"
-                placeholder="请输入内容"
-                @select="handleSelect">
-<!--                :trigger-on-focus="false"-->
-<!--                >-->
-              <el-button slot="append" icon="el-icon-search" @click="searchList"></el-button>
-            </el-autocomplete>
+
+
+            <el-form :inline="true" :model="formInline2" class="demo-form-inline">
+              <el-autocomplete
+                  class="inline-input"
+                  v-model="state1"
+                  :fetch-suggestions="querySearch"
+                  value-key="value"
+                  placeholder="请输入内容"
+                  >
+              </el-autocomplete>
+              <el-form-item>
+                <el-button slot="append" icon="el-icon-search" @click="Sort"></el-button>
+              </el-form-item>
+            </el-form>
+
           </el-col>
           <el-col :span="4">
             <el-button type="primary" @click="Visible=true">添加运动员</el-button>
@@ -30,7 +36,8 @@
         </el-row>
         <el-table :data="athlist" border stripe>
           <el-table-column  type="index"></el-table-column>
-          <el-table-column  label="姓名" prop="name"></el-table-column>
+          <el-table-column  label="姓" prop="lname"></el-table-column>
+          <el-table-column  label="名" prop="fname"></el-table-column>
           <el-table-column  label="国籍" prop="country"></el-table-column>
           <el-table-column  label="生日" prop="DOB"></el-table-column>
           <el-table-column  label="性别" prop="sex"></el-table-column>
@@ -43,8 +50,11 @@
         width="50%" @close="Close1">
 
       <el-form :model="addForm" :rules="addFormRules" ref="addFormRef" label-width="70px" >
-        <el-form-item label="运动员" prop="name">
-          <el-input v-model="addForm.name"></el-input>
+        <el-form-item label="运动员姓" prop="lname">
+          <el-input v-model="addForm.lname"></el-input>
+        </el-form-item>
+        <el-form-item label="运动员名" prop="fname">
+          <el-input v-model="addForm.lname"></el-input>
         </el-form-item>
         <el-form-item label="国籍" prop="country">
           <el-input v-model="addForm.country"></el-input>
@@ -74,11 +84,14 @@ export default {
 }
 </script>
 <script>
+import athlist from "@/view/Athlist";
+import axios from "axios";
+
 export default {
   data(){
     return {
       state1:'',
-Search:[],
+      Search:[],
       queryInfo:{
         query:'',
         pagenum:1,
@@ -87,18 +100,27 @@ Search:[],
       Visible:false,
       athlist:[],
       total:'',
+      formInline2:{
+        name:''
+      },
       addForm:{
-        name:'',
+        lname:'',
+        fname:'',
         country:'',
         DOB:'',
         sex:''
       },
       addFormRules:{
-        name:[
+        lname:[
           {required:true,message:'请输入运动员名',trigger:'blur'},
           {min:3,max:20,message: '运动员名在3~20字符之间',trigger: 'blur'
           }
             ],
+        fname:[
+          {required:true,message:'请输入运动员姓',trigger:'blur'},
+          {min:3,max:20,message: '运动员名在3~20字符之间',trigger: 'blur'
+          }
+        ],
         country:[
           {required:true,message:'请输入运动员国籍',trigger:'blur'},
           {min:2,max:20,message: '国籍在2~20字符之间',trigger: 'blur'
@@ -146,6 +168,19 @@ Search:[],
       })
 
     },
+    Sort(){
+      axios
+          .post("http://localhost:8085/", {
+            name:this.formInline2.name
+          })
+          .then(res => {
+            console.log(res);
+            for(var key in res.data){
+              this.athlist.push({'fname':key,'lname':res.lname,'country':res[key],'DOB':res.DOB,'sex':res.sex});
+            }
+
+          });
+    },
   querySearch(queryString, cb) {
     var Search = this.Search;
     var results = queryString ? Search.filter(this.createFilter(queryString)) : Search;
@@ -153,25 +188,22 @@ Search:[],
     cb(results);
   },
   createFilter(queryString) {
-    return (name) => {
-      return (name.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+    return (item) => {
+      return (item.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
     };
   },
     loadAll() {
       return [
-        { "name": "李铭扬", "country": "China","sex":"male","DOB":"2000-0-0" },
-        { "name": "李金泽", "country": "China","sex":"male","DOB":"2000-0-0" },
-        { "name": "黄奕天", "country": "China","sex":"male","DOB":"2000-0-0" },
-        { "name": "冯敏言", "country": "China","sex":"male","DOB":"2000-0-0" },
-        { "name": "张嘉航", "country": "China","sex":"female","DOB":"2000-0-0" },
-
+        { "value": "李铭扬", "country": "China","sex":"male","DOB":"2000-0-0" },
+        { "value": "李金泽", "country": "China","sex":"male","DOB":"2000-0-0" },
+        { "value": "黄奕天", "country": "China","sex":"male","DOB":"2000-0-0" },
+        { "value": "冯敏言", "country": "China","sex":"male","DOB":"2000-0-0" },
+        { "value": "张嘉航", "country": "China","sex":"female","DOB":"2000-0-0" },
       ];
     },
-    mounted() {
-      this.athlist = this.loadAll();
-    },handleSelect(item) {
-      console.log(item);
-    }
+
+  },mounted() {
+    this.Search = this.loadAll();
   }
 
 
