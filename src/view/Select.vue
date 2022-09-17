@@ -1,26 +1,36 @@
 <template>
   <div>
     <el-form :inline="true" :model="formInline" class="demo-form-inline">
-      <el-form-item label="运动员">
-        <el-select v-model="formInline.ath" placeholder="运动员">
-          <el-option label="a" value="a"></el-option>
-          <el-option label="b" value="b"></el-option>
-        </el-select>
-      </el-form-item>
+      <el-form-item label="年份">
+      <el-date-picker
+          v-model="formInline.year"
+          type="year"
+          placeholder="选择年">
+      </el-date-picker>
       <el-form-item label="比赛类型">
         <el-select v-model="formInline.kind" placeholder="比赛类型">
-          <el-option label="一周" value="one-turn"></el-option>
-          <el-option label="两周" value="two-turn"></el-option>
+          <el-option label="World Trampoline Championships" value="World Trampoline Championships"></el-option>
+          <el-option label="Olympics" value="Olympics"></el-option>
+          <el-option label="Trampoline World Cup" value="Trampoline World Cup"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="比赛项目">
         <el-select v-model="formInline.item" placeholder="比赛项目">
-          <el-option label="一周" value="one-turn"></el-option>
-          <el-option label="两周" value="two-turn"></el-option>
+          <el-option label="Women's Net Double Sync" value="Women's Net Double Sync"></el-option>
+          <el-option label="Women's Net Individual" value="Women's Net Individual"></el-option>
+          <el-option label="Women's Net Team" value="Women's Net Team"></el-option>
+          <el-option label="Women's Individual" value="Women's Individual"></el-option>
+          <el-option label="Women's Team" value="Women's Team"></el-option>
+          <el-option label="Men's Net Double Sync" value="Men's Net Double Sync"></el-option>
+          <el-option label="Men's Net Individual" value="Men's Net Individual"></el-option>
+          <el-option label="Men's Net Team" value="Men's Net Team"></el-option>
+          <el-option label="Men's Individual" value="Men's Individual"></el-option>
+          <el-option label="Men's Team" value="Men's Team"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">查询</el-button>
+      </el-form-item>
       </el-form-item>
     </el-form>
     <el-form :inline="true" :model="formInline2" class="demo-form-inline">
@@ -53,7 +63,7 @@ export default {
         // {url:require('../assets/2.jpg'),link:'https://www.bilibili.com/video/BV1XT4y1Z76R?spm_id_from=333.337.search-card.all.click'}
       ],
       formInline: {
-        ath: '',
+        year: '',
         kind: '',
         item:''
       },
@@ -80,7 +90,7 @@ export default {
       console.log('submit!');
       axios
           .post("http://localhost:8085/video/play", {
-            ath: this.formInline.ath,
+            year: this.formInline.year,
             kind: this.formInline.kind,
             item: this.formInline.item
           })

@@ -1,12 +1,9 @@
-<head>
-
-</head>
 <template>
   <div>
     <el-container>
       <el-header>
 
-        <span>蹦床动作质量评估系统</span>
+        <p>蹦床运动管理平台</p>
 
         <el-button @click="drawer = true" type="primary" round
                    icon="el-icon-s-custom" style="margin-left: 16px;">
@@ -20,6 +17,14 @@
           <ul>
             <li>
               <span>账号：</span>
+              <!--                 <span>{{adminInfo.id}}</span>-->
+            </li>
+            <li>
+              <span>邮箱：</span>
+              <!--                 <span>{{adminInfo.id}}</span>-->
+            </li>
+            <li>
+              <span>权限：</span>
               <!--                 <span>{{adminInfo.id}}</span>-->
             </li>
             <li>
@@ -54,7 +59,6 @@
                 <i class="el-icon-document"></i>数据管理</template>
               <el-menu-item index="AthList">运动员列表</el-menu-item>
               <el-menu-item index="actList">比赛信息</el-menu-item>
-              <el-menu-item index="gameInfor">无</el-menu-item>
             </el-submenu>
             <el-submenu index="3">
               <template slot="title">
@@ -99,7 +103,6 @@ export default {
   },
   data() {
     return {
-      isCollapse: false,
       imageUrl: '',
       drawer: false,
     };
@@ -117,7 +120,9 @@ export default {
 </script>
 
 <style lang="less">
-
+.p{
+  font-size: 25px;
+}
 
 .el-main{
 
@@ -129,7 +134,8 @@ export default {
   justify-content: space-between;
   padding-left: 0;
   align-items: center;
-  font-size: 20px;
+  font-size: 24px;
+  font-weight: bold;
   >div{
     display: flex;//嵌套
     align-items: center;

@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-header>
-      <span>蹦床管理系统</span>
+      <span>蹦床运动管理系统</span>
       <el-row>
         <el-col :span="24">
           <router-link to="/main" class="bg-purple-light">
