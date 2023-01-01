@@ -104,27 +104,37 @@ export default {
     };
   },
   methods: {
-    submitForm() {
-      axios
-          .post("http://localhost:8085/video/play", {
-            name: this.ruleForm.name,
-            date1: this.ruleForm.date1,
-            place: this.ruleForm.place,
-            temperature: this.ruleForm.temperature,
-            isschool: this.ruleForm.isschool,
-            isfever: this.ruleForm.isfever,
-            desc: this.ruleForm.desc,
-          })
-          .then(res => {
-            console.log(res);
-            console.log(res.data);
-            // for(var key in res.data){
-            //  this.imgs.push({'url':require('../assets/'+key),'link':res.data[key]});
-            // }
-            console.log(this.ruleForm);
-          });
 
-          this.$message.success('添加运动员成功')
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          axios
+              .post("http://localhost:8085/video/play", {
+                name: this.ruleForm.name,
+                date1: this.ruleForm.date1,
+                place: this.ruleForm.place,
+                temperature: this.ruleForm.temperature,
+                isschool: this.ruleForm.isschool,
+                isfever: this.ruleForm.isfever,
+                desc: this.ruleForm.desc,
+              })
+              .then(res => {
+                console.log(res);
+                console.log(res.data);
+                // for(var key in res.data){
+                //  this.imgs.push({'url':require('../assets/'+key),'link':res.data[key]});
+                // }
+                console.log(this.ruleForm);
+                this.$message.success('每日填报成功')
+              });
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
+
+
+
         }
     },
     resetForm(formName) {
