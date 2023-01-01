@@ -3,7 +3,7 @@
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>数据管理</el-breadcrumb-item>
-      <el-breadcrumb-item>运动员列表</el-breadcrumb-item>
+      <el-breadcrumb-item>每日填报数据</el-breadcrumb-item>
     </el-breadcrumb>
     <el-card>
       <div>
@@ -38,48 +38,52 @@
         <el-table :data="athlist" border stripe>
           <el-table-column  type="index"></el-table-column>
           <el-table-column  label="姓名" prop="name"></el-table-column>
-          <el-table-column  label="国籍" prop="country"></el-table-column>
-          <el-table-column  label="生日" prop="DOB"></el-table-column>
-          <el-table-column  label="性别" prop="sex"></el-table-column>
+          <el-table-column  label="学工号" prop="number"></el-table-column>
+          <el-table-column  label="填报时间" prop="date1"></el-table-column>
+          <el-table-column  label="是否在校" prop="isschool"></el-table-column>
+          <el-table-column  label="体温" prop="temperature"></el-table-column>
+          <el-table-column  label="所在地点" prop="place"></el-table-column>
+          <el-table-column  label="是否有新冠症状" prop="isfever"></el-table-column>
+          <el-table-column  label="其他信息" prop="desc"></el-table-column>
         </el-table>
       </div>
     </el-card>
-    <el-dialog
-        title="添加运动员"
-        :visible.sync="Visible"
-        width="50%" @close="Close1">
+<!--    <el-dialog-->
+<!--        title="添加运动员"-->
+<!--        :visible.sync="Visible"-->
+<!--        width="50%" @close="Close1">-->
 
-      <el-form :model="addForm" :rules="addFormRules" ref="addFormRef" label-width="70px" >
+<!--      <el-form :model="addForm" :rules="addFormRules" ref="addFormRef" label-width="70px" >-->
 
-        <el-form-item label="运动员" prop="name">
-          <el-input v-model="addForm.name"></el-input>
+<!--        <el-form-item label="运动员" prop="name">-->
+<!--          <el-input v-model="addForm.name"></el-input>-->
 
-<!--        <el-form-item label="姓" prop="lname">-->
-<!--          <el-input v-model="addForm.lname"></el-input>-->
+<!--&lt;!&ndash;        <el-form-item label="姓" prop="lname">&ndash;&gt;-->
+<!--&lt;!&ndash;          <el-input v-model="addForm.lname"></el-input>&ndash;&gt;-->
+<!--&lt;!&ndash;        </el-form-item>&ndash;&gt;-->
+<!--&lt;!&ndash;        <el-form-item label="名" prop="fname">&ndash;&gt;-->
+<!--&lt;!&ndash;          <el-input v-model="addForm.lname"></el-input>&ndash;&gt;-->
+
 <!--        </el-form-item>-->
-<!--        <el-form-item label="名" prop="fname">-->
-<!--          <el-input v-model="addForm.lname"></el-input>-->
-
-        </el-form-item>
-        <el-form-item label="国籍" prop="country">
-          <el-input v-model="addForm.country"></el-input>
-        </el-form-item>
-        <el-form-item label="生日">
-          <el-col :span="11">
-            <el-date-picker type="date" placeholder="选择日期" v-model="addForm.DOB" style="width: 100%;"></el-date-picker>
-          </el-col>
-        </el-form-item>
-        <el-form-item label="性别" prop="sex">
-          <el-input v-model="addForm.sex"></el-input>
-        </el-form-item>
-      </el-form>
+<!--        <el-form-item label="国籍" prop="country">-->
+<!--          <el-input v-model="addForm.country"></el-input>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="生日">-->
+<!--          <el-col :span="11">-->
+<!--            <el-date-picker type="date" placeholder="选择日期" v-model="addForm.DOB" style="width: 100%;"></el-date-picker>-->
+<!--          </el-col>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="性别" prop="sex">-->
+<!--          <el-input v-model="addForm.sex"></el-input>-->
+<!--        </el-form-item>-->
+<!--      </el-form>-->
 
 
-      <span slot="footer" class="dialog-footer">
-    <el-button @click="Visible = false">取 消</el-button>
-    <el-button type="primary" @click="addAth">确 定</el-button>
-  </span>
-    </el-dialog>
+<!--      <span slot="footer" class="dialog-footer">-->
+<!--    <el-button @click="Visible = false">取 消</el-button>-->
+<!--    <el-button type="primary" @click="addAth">确 定</el-button>-->
+<!--  </span>-->
+<!--    </el-dialog>-->
 
   </div>
 </template>

@@ -3,7 +3,7 @@
     <el-container>
       <el-header>
 
-        <p>疫情防控系统(客户端)</p>
+        <p>疫情防控系统(管理端)</p>
 
         <el-button @click="drawer = true" type="primary" round
                    icon="el-icon-s-custom" style="margin-left: 16px;">
@@ -33,7 +33,7 @@
                   class="avatar-uploader"
                   action="https://jsonplaceholder.typicode.com/posts/"
                   :show-file-list="false"
-                 >
+              >
                 <img v-if="imageUrl" :src="imageUrl" class="avatar">
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
               </el-upload>
@@ -43,45 +43,51 @@
 
 
       </el-header>
-<div class="menu-box">
-      <el-container>
-        <el-aside width="200px">
-          <el-menu  router background-color="#324057" active-text-color="#ffee2b" text-color="#fff"
-                  :unique-opened="true" >
-            <div class="emotion-box" @click="jump">
-              <i id="emotion1" class="iconfont icon-wukongbiaoqing"></i>
-              <i id="emotion2" class="iconfont icon-chenggongbiaoqing"></i>
-            </div>
-            <el-menu-item index="welcome">
-              <i class="el-icon-menu"></i>首页</el-menu-item>
-            <el-submenu index="3">
-              <template slot="title">
-                <i class="el-icon-plus"></i><span>防控填报</span></template>
-              <el-menu-item index="Addath"><span>返京申请</span></el-menu-item>
-              <el-menu-item index="Addact"><span>每日填报</span></el-menu-item>
-            </el-submenu>
-            <el-submenu index="4">
-              <template slot="title">
-                <i class="el-icon-star-on"></i>核酸信息查询</template>
-              <el-menu-item index="Select">查询</el-menu-item>
-            </el-submenu>
-            <el-submenu index="5">
-              <template slot="title"><i class="el-icon-warning"></i>说明</template>
-              <el-menu-item index="Managermain">说明</el-menu-item>
-            </el-submenu>
+      <div class="menu-box">
+        <el-container>
+          <el-aside width="200px">
+            <el-menu  router background-color="#324057" active-text-color="#ffee2b" text-color="#fff"
+                      :unique-opened="true" >
+              <div class="emotion-box" @click="jump">
+                <i id="emotion1" class="iconfont icon-wukongbiaoqing"></i>
+                <i id="emotion2" class="iconfont icon-chenggongbiaoqing"></i>
+              </div>
+              <el-menu-item index="welcome">
+                <i class="el-icon-menu"></i>首页</el-menu-item>
+              <el-submenu index="2" active-text-color="#ffee2b">
+                <template slot="title">
+                  <i class="el-icon-document"></i>数据管理</template>
+                <el-menu-item index="AthList">每日填报数据</el-menu-item>
+                <el-menu-item index="actList">师生核酸数据</el-menu-item>
+              </el-submenu>
+              <el-submenu index="3">
+                <template slot="title">
+                  <i class="el-icon-plus"></i><span>异常风险管理</span></template>
+                <el-menu-item index="Addath"><span>添加异常师生</span></el-menu-item>
+                <el-menu-item index="Addact"><span>异常管理条例</span></el-menu-item>
+              </el-submenu>
+              <el-submenu index="4">
+                <template slot="title">
+                  <i class="el-icon-star-on"></i>现行防疫政策</template>
+                <el-menu-item index="Select">查看</el-menu-item>
+              </el-submenu>
+              <el-submenu index="5">
+                <template slot="title"><i class="el-icon-warning"></i>说明</template>
+                <el-menu-item index="Main">说明</el-menu-item>
+              </el-submenu>
 
-          </el-menu>
+            </el-menu>
 
-        </el-aside>
+          </el-aside>
 
-        <el-main>
-          <router-view>
+          <el-main>
+            <router-view>
 
-          </router-view>
-        </el-main>
+            </router-view>
+          </el-main>
 
-      </el-container>
-  </div>
+        </el-container>
+      </div>
     </el-container>
   </div>
 
@@ -89,7 +95,7 @@
 
 <script>
 export default {
-  name: "Main",
+  name: "Managermain",
   computed: {
     defaultActive: function(){
       return this.$route.path.replace('/', '');
@@ -105,7 +111,7 @@ export default {
     created() {
     },
     jump(){
-     // animation: jitter .3s linear forwards;
+      // animation: jitter .3s linear forwards;
     }
   }
 

@@ -2,10 +2,10 @@
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>添加数据</el-breadcrumb-item>
-      <el-breadcrumb-item>添加运动员</el-breadcrumb-item>
+      <el-breadcrumb-item>防控填报</el-breadcrumb-item>
+      <el-breadcrumb-item>返京申请</el-breadcrumb-item>
     </el-breadcrumb>
-    <h2>添加运动员</h2>
+    <h2>返京申请</h2>
   </div>
 </template>
 

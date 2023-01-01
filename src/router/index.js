@@ -9,10 +9,11 @@ import Addath from "@/view/Addath";
 import Addact from "@/view/Addact";
 import welcome from "../view/welcome";
 import actList from "../view/actList";
-import Athlist from "@/view/Athlist";
 import select from "@/view/Select";
 import Player from "@/view/Player";
-import explain from "@/view/explain";
+
+import Managermain from "@/view/Managermain";
+import athlist from "@/view/Athlist";
 Vue.use(Router)
 
 export default new Router({
@@ -25,7 +26,7 @@ export default new Router({
         {
             path: '/',
             component: Main,
-            redirect:'/welcome',
+            redirect:'/Main',
             //嵌套路由
             children: [
                 {
@@ -40,12 +41,6 @@ export default new Router({
                     path: "/user/profile",
                     name:'UserProfile',
                     component: Profile
-                },{
-                    path: '/actList',
-                    component: actList,
-                },{
-                    path: '/AthList',
-                    component: Athlist,
                 }
             ]
         },
@@ -64,8 +59,27 @@ export default new Router({
                     component: select,
                 },{
                     path: '/explain',
-                    component: explain,
+                    component: Managermain,
                 },
+            ]
+        },
+        {
+            path: '/Managermain',
+            component: Managermain,
+            children:[
+                {
+                    path: '/Addact',
+                    component: Addact,
+                },{
+                    path: '/AthList',
+                    component: athlist,
+                },{
+                    path: '/explain',
+                    component: Managermain,
+                },{
+                    path: '/actList',
+                    component: actList,
+                }
             ]
         },
         {

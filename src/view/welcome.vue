@@ -26,7 +26,7 @@ export default {
       restaurants: [],
       state1: '',
       state2: '',
-      defaultImg:require('@/assets/3.webp')
+      //defaultImg:require('@/assets/3.webp')
     };
   },
   methods: {
