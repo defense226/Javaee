@@ -111,6 +111,7 @@ export default {
           axios
               .post("http://localhost:8085/video/play", {
                 name: this.ruleForm.name,
+                number: this.ruleForm.number,
                 date1: this.ruleForm.date1,
                 place: this.ruleForm.place,
                 temperature: this.ruleForm.temperature,

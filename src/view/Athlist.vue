@@ -9,31 +9,31 @@
       <div>
 
         <el-row :gutter="25">
-          <el-col :span="9">
+<!--          <el-col :span="9">-->
 
 
-              <el-button  icon="el-icon-refresh-right" @click="getathList"></el-button>
+<!--              <el-button  icon="el-icon-refresh-right" @click="getathList"></el-button>-->
 
 
 
-            <el-form :inline="true" :model="formInline2" class="demo-form-inline">
-              <el-autocomplete
-                  class="inline-input"
-                  v-model="state1"
-                  :fetch-suggestions="querySearch"
-                  value-key="value"
-                  placeholder="请输入内容"
-                  >
-              </el-autocomplete>
-              <el-form-item>
-                <el-button icon="el-icon-search" @click="Sort"></el-button>
-              </el-form-item>
-            </el-form>
+<!--            <el-form :inline="true" :model="formInline2" class="demo-form-inline">-->
+<!--              <el-autocomplete-->
+<!--                  class="inline-input"-->
+<!--                  v-model="state1"-->
+<!--                  :fetch-suggestions="querySearch"-->
+<!--                  value-key="value"-->
+<!--                  placeholder="请输入内容"-->
+<!--                  >-->
+<!--              </el-autocomplete>-->
+<!--              <el-form-item>-->
+<!--                <el-button icon="el-icon-search" @click="Sort"></el-button>-->
+<!--              </el-form-item>-->
+<!--            </el-form>-->
 
-          </el-col>
-          <el-col :span="4">
-            <el-button type="primary" @click="Visible=true">添加运动员</el-button>
-          </el-col>
+<!--          </el-col>-->
+<!--          <el-col :span="4">-->
+<!--            <el-button type="primary" @click="Visible=true">添加运动员</el-button>-->
+<!--          </el-col>-->
         </el-row>
         <el-table :data="athlist" border stripe>
           <el-table-column  type="index"></el-table-column>
